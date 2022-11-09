@@ -3,11 +3,19 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [thirtyfiveWage, setThirtyfiveWage] = useState("");
+  const [thirtyFiveWage, setThirtyFiveWage] = useState("");
   const [thirtyNineWage, setThirtyNineWage] = useState("");
 
   const [convertedThirtyfiveWage, setConvertedThirtyfiveWage] = useState(0);
   const [convertedThirtyNineWage, setConvertedThirtyNineWage] = useState(0);
+
+  useEffect(() => {
+    setConvertedThirtyfiveWage(((Number(thirtyFiveWage) / 35) * 39).toFixed(2));
+  }, [thirtyFiveWage]);
+
+  useEffect(() => {
+    setConvertedThirtyNineWage(((Number(thirtyNineWage) / 39) * 35).toFixed(2));
+  }, [thirtyNineWage]);
 
   return (
     <div className="App">
@@ -20,8 +28,8 @@ function App() {
               <input
                 type="number"
                 id="thirtyfiveWage"
-                value={thirtyfiveWage}
-                onChange={(e) => setThirtyfiveWage(e.target.value)}
+                value={thirtyFiveWage}
+                onChange={(e) => setThirtyFiveWage(e.target.value)}
               />
             </div>
             <div className="wage-calculated">
@@ -40,7 +48,7 @@ function App() {
               />
             </div>
             <div className="wage-calculated">
-              This makes {convertedThirtyfiveWage} for 35 hours.
+              This makes {convertedThirtyNineWage} for 35 hours.
             </div>
           </div>
         </div>
